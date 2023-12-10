@@ -129,6 +129,11 @@ _G.packer_plugins = {
     path = "/home/ryangeor/.local/share/nvim/site/pack/packer/start/nvim-osc52",
     url = "https://github.com/ojroques/nvim-osc52"
   },
+  ["nvim-treesitter"] = {
+    loaded = true,
+    path = "/home/ryangeor/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/ryangeor/.local/share/nvim/site/pack/packer/start/packer.nvim",

@@ -94,6 +94,9 @@ fi
 export PATH=$PATH:~/local/bin
 alias nvi=nvim
 
+
+# wget http://checkip.dyndns.org/ -O - -o /dev/null | cut -d: -f 2 | cut -d\< -f 1
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -101,3 +104,6 @@ alias nvi=nvim
 #    . /etc/bash_completion
 #fi
 . "$HOME/.cargo/env"
+
+set -o vi
+

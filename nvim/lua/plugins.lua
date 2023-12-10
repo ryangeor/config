@@ -10,17 +10,25 @@ local ensure_packer = function()
 end
 local packer_bootstrap = ensure_packer()
 
-
 return require('packer').startup(function(use)
-use 'wbthomason/packer.nvim'
+
+-- duh
 use 'wbthomason/packer.nvim'
 use 'rstacruz/vim-closer'
+
+-- terminal
 use 'voldikss/vim-floaterm'
-use 'rose-pine/neovim'
+
+-- the teachings of the vimscript wizard
 use 'tpope/vim-surround'
 use 'tpope/vim-fugitive'
-use 'rust-lang/rust.vim'
 
+-- colors
+use 'rose-pine/neovim'
+use 'fynnfluegge/monet.nvim'
+
+-- all the lsp/autocomplete-related stuff
+use 'rust-lang/rust.vim'
 use 'williamboman/mason.nvim'
 use 'williamboman/mason-lspconfig.nvim'
 use 'neovim/nvim-lspconfig'
@@ -36,9 +44,13 @@ use({
   requires = { "hrsh7th/nvim-cmp" },
 })
 use('hrsh7th/vim-vsnip')
+
+-- paste over ssh
 use 'ojroques/nvim-osc52'
-  if packer_bootstrap then
-    require('packer').sync()
-  end
+use 'nvim-treesitter/nvim-treesitter'
+
+if packer_bootstrap then
+require('packer').sync()
+end
 end)
 
