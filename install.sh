@@ -34,6 +34,15 @@ ln -s $PWD/nvim $HOME/.config/nvim
 
 source $HOME/.bashrc
 
+
+
+# needed packages on whatever sys
+#
+# https://github.com/sharkdp/fd
+# https://github.com/BurntSushi/ripgrep
+
+
+
 # install packer 
 # todo: handle this in lua isntead 
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\

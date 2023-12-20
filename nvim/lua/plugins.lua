@@ -49,6 +49,12 @@ use('hrsh7th/vim-vsnip')
 use 'ojroques/nvim-osc52'
 use 'nvim-treesitter/nvim-treesitter'
 
+
+-- finding shit
+use {'nvim-telescope/telescope.nvim', requires={'nvim-lua/plenary.nvim'}}
+use 'nvim-telescope/telescope-fzf-native.nvim'
+
+
 if packer_bootstrap then
 require('packer').sync()
 end

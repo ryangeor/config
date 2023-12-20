@@ -110,6 +110,13 @@ vim.wo.foldenable=false
 vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', {noremap=true, silent=true})
 
 -- colors for when in the mood
+require("rose-pine").setup {
+    transparent_background = true,
+    semantic_tokens = true,
+    highlight_overrides= {},
+    color_overrides = {},
+    styles = {},
+}
 require("monet").setup {
     transparent_background = true,
     semantic_tokens = true,
@@ -117,10 +124,16 @@ require("monet").setup {
     color_overrides = {},
     styles = {},
 }
---vim.cmd('colorscheme rose-pine')
-vim.cmd('colorscheme monet')
+--vim.cmd('colorscheme monet')
+vim.cmd('colorscheme rose-pine')
 vim.keymap.set('n', "<leader>rp", ":colorscheme rose-pine<CR>")
 vim.keymap.set('n', "<leader>cmn", ":colorscheme monet<CR>")
 vim.keymap.set('n', "<leader>bl", ":set background=light<CR>")
 vim.keymap.set('n', "<leader>bd", ":set background=dark<CR>")
 
+
+local telescope = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', telescope.find_files, {})
+vim.keymap.set('n', '<leader>fg', telescope.live_grep, {})
+vim.keymap.set('n', '<leader>fb', telescope.buffers, {})
+vim.keymap.set('n', '<leader>fh', telescope.help_tags, {})
