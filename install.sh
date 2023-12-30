@@ -1,5 +1,5 @@
-
 # we want to install everything in home, want this to work irrespective of perms
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 bkp_path=$HOME/config_install_backup
 
@@ -28,23 +28,14 @@ else
 	mkdir -p $HOME/.config
 fi
 
-ln -s $PWD/.tmux.conf $HOME/.tmux.conf
-ln -s $PWD/.bashrc $HOME/.bashrc 
-ln -s $PWD/nvim $HOME/.config/nvim 
+ln -s $SCRIPT_DIR/.tmux.conf $HOME/.tmux.conf
+ln -s $SCRIPT_DIR/.bashrc $HOME/.bashrc 
+ln -s $SCRIPT_DIR/nvim $HOME/.config/nvim 
+# todo: script dir
+ln -s $SCRIPT_DIR/zellij $HOME/.config/zellij 
 
 source $HOME/.bashrc
 
-
-
 # needed packages on whatever sys
-#
 # https://github.com/sharkdp/fd
 # https://github.com/BurntSushi/ripgrep
-
-
-
-# install packer 
-# todo: handle this in lua isntead 
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
