@@ -91,8 +91,9 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-export PATH=$PATH:~/local/bin
+export PATH=$PATH:~/local/bin:~/.cargo/bin
 export EDITOR='nvi'
+export QMK_HOME=/home/ryangeor/git/qmk_parent/qmk
 alias nvi=nvim
 
 # wget http://checkip.dyndns.org/ -O - -o /dev/null | cut -d: -f 2 | cut -d\< -f 1

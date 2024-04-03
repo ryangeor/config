@@ -8,11 +8,4 @@ layout {
             plugin location="zellij:status-bar"
         }
     }
-    pane split_direction="vertical" {
-        pane size="70%"
-        pane split_direction="horizontal" {
-            pane
-            pane
-        }
-    }
 }

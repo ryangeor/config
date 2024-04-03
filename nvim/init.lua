@@ -5,6 +5,10 @@ vim.api.nvim_command('set runtimepath^=~/.local/share/nvim')
 vim.api.nvim_command('set runtimepath^=~/.local/nvim/site/after')
 vim.api.nvim_command('let &packpath = &runtimepath')
 
+
+vim.g.mapleader =','
+vim.g.maplocalleader = ','
+
 require('plugins')
 
 -- tags
@@ -12,23 +16,16 @@ vim.api.nvim_command('set tabstop=4')
 vim.api.nvim_command('set shiftwidth=4 smarttab')
 vim.api.nvim_command('set expandtab')
 
--- floatterm
-vim.keymap.set('n', '<leader>ft', ':FloatermNew<CR>')
-vim.keymap.set('t', '<leader>ft', '<C-\\><C-n>:FloatermNew<CR>')
-vim.keymap.set('n', '<leader>n', ':FloatermNext<CR>')
-vim.keymap.set('t', '<leader>n', '<C-\\><C-n>:FloatermNext<CR>')
-vim.keymap.set('n', '<leader>p', ':FloatermPrev<CR>')
-vim.keymap.set('t', '<leader>p', '<C-\\><C-n>:FloatermPrev<CR>')
-vim.keymap.set('n', 't', ':FloatermToggle<CR>')
-vim.keymap.set('t', '<leader>t', '<C-\\><C-n>:FloatermToggle<CR>')
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n><CR>')
-
 -- make macro mispresses harder 
 vim.keymap.set('n', '<leader>q', 'q')
 vim.keymap.set('n', 'q', '<Nop>')
 
 -- misc
 vim.keymap.set('n', '<leader>b', ':set invrelativenumber<CR>')
+
+-- nav overrides
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
 
 vim.diagnostic.config({
   virtual_text = true,
@@ -78,6 +75,24 @@ rt.setup({
     },
 })
 
+require('osc52').setup {
+  max_length = 0,           -- Maximum length of selection (0 for no limit)
+  silent = false,           -- Disable message on successful copy
+  trim = false,             -- Trim surrounding whitespaces before copy
+  tmux_passthrough = false, -- Use tmux passthrough (requires tmux: set -g allow-passthrough on)
+}
+
+vim.keymap.set('n', '<leader>c', require('osc52').copy_operator, {expr = true})
+vim.keymap.set('n', '<leader>cc', '<leader>c_', {remap = true})
+vim.keymap.set('v', '<leader>c', require('osc52').copy_visual)
+
+function copy()
+  if vim.v.event.operator == 'y' and vim.v.event.regname == '+' then
+    require('osc52').copy_register('+')
+  end
+end
+
+vim.api.nvim_create_autocmd('TextYankPost', {callback = copy})
 
 -- copy paste yadayada over ssh inc
 vim.g.clipboard = {

@@ -6,14 +6,9 @@ bkp_path=$HOME/config_install_backup
 mkdir -p $HOME/local/bin
 mkdir -p $HOME/.config
 mkdir -p $bkp_path
-
-# 
+ 
 #wget https://github.com/neovim/neovim/releases/stable/downloads/nvim.appimage -P/local/bin
 #chmod +x $HOME/local/bin/nvim.appimage
-
-# todo: ensure releveant dirs do or do not exist, want to reaplce these files.
-# buut do a backup first. 
-
 if [ -f "$HOME/.tmux.conf" ]; then
 	mv $HOME/.tmux.conf $bkp_path/
 fi
