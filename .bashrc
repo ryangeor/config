@@ -3,8 +3,8 @@
 # for examples
 
 # If not running interactively, don't do anything
-[ -z "$PS1" ] && return
-
+[[ $- != *i* ]] && return
+PS1='[\u@\h \W]\$ '
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace
@@ -15,6 +15,16 @@ shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
+
+alias nvi="nvim"
+alias iconfig="nvim ~/.config/i3/config"
+alias polyconfig="nvim ~/.config/polybar/config.ini"
+alias piconfig="nvim ~/.config/picom/picom.conf"
+alias alconfig="nvim ~/.config/alacritty/alacritty.toml"
+alias kitconfig="nvim ~/.config/kitty/kitty.conf"
+alias wezconfig="nvim ~/.config/wezterm/wezterm.lua"
+
+
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -94,7 +104,6 @@ fi
 export PATH=$PATH:~/local/bin:~/.cargo/bin
 export EDITOR='nvi'
 export QMK_HOME=/home/ryangeor/git/qmk_parent/qmk
-alias nvi=nvim
 
 # wget http://checkip.dyndns.org/ -O - -o /dev/null | cut -d: -f 2 | cut -d\< -f 1
 
